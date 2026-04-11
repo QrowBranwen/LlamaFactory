@@ -44,7 +44,7 @@ bf16: true
 ddp_timeout: 180000000
 resume_from_checkpoint: null
 max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
-# gradient_checkpointing: true             # 必须开
+gradient_checkpointing: true             # 必须开
 flash_attn: fa2 
 
 ### eval
