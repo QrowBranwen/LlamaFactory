@@ -20,7 +20,7 @@ template: qwen3_nothink
 cutoff_len: 8192
 overwrite_cache: true
 preprocessing_num_workers: 16 
-dataloader_num_workers: 4
+dataloader_num_workers: 8
 
 ### output
 output_dir: saves/qwen35-27b-mix-attribution/full/sft
@@ -32,7 +32,7 @@ save_total_limit: 3          # 限制 checkpoint 数量
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
 
 ### train
-per_device_train_batch_size: 3
+per_device_train_batch_size: 4
 gradient_accumulation_steps: 4
 learning_rate: 1.0e-5
 num_train_epochs: 3.0
@@ -42,12 +42,12 @@ bf16: true
 ddp_timeout: 180000000
 resume_from_checkpoint: null
 max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
-#gradient_checkpointing: true             # 显存爆炸必须开
+gradient_checkpointing: true             # 显存爆炸必须开
 flash_attn: fa2 
 
 ### eval
 val_size: 0.1
-per_device_eval_batch_size: 1
+per_device_eval_batch_size: 3
 eval_strategy: steps
 eval_steps: 200
 ### 关键配置：保存 best model
