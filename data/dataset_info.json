@@ -743,6 +743,20 @@
       "assistant_tag": "assistant"
     }
   },
+  "attribution_shooter_mix": {
+    "file_name": "/dockerdata/ozpintang/train_data/train_data_gemini_shooter_mix.arrow",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "system": "system"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
   "attribution_only": {
     "file_name": "/dockerdata/ozpintang/train_data/best_ans_total_20260325.arrow",
     "formatting": "sharegpt",

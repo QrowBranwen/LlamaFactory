@@ -8,22 +8,23 @@ do_train: true
 do_eval: true
 finetuning_type: lora
 lora_target: all
-lora_rank: 8
-deepspeed: examples/deepspeed/ds_z3_config.json
+lora_rank: 16
+deepspeed: examples/deepspeed/ds_z2_config.json
 
 ###logging
-run_name: Qwen3.5-27B_mix-attribution_lora_experiment
+run_name: Qwen3.5-27B_shooter-mix-attribution_lora_experiment
 
 ### dataset
-dataset: attribution_mix
+dataset: attribution_shooter_mix
 template: qwen3_nothink
 cutoff_len: 8192
 overwrite_cache: true
 preprocessing_num_workers: 16 
 dataloader_num_workers: 4
+packing: true
 
 ### output
-output_dir: saves/qwen35-27b-mix-attribution/lora/sft
+output_dir: saves/qwen35-27b-shooter-mix-attribution/lora/sft
 logging_steps: 10
 save_steps: 200
 plot_loss: true
