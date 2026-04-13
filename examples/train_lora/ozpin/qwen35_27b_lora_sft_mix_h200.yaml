@@ -34,7 +34,7 @@ save_total_limit: 3          # 限制 checkpoint 数量
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
 
 ### train
-per_device_train_batch_size: 3
+per_device_train_batch_size: 2
 gradient_accumulation_steps: 4
 learning_rate: 1.0e-4
 num_train_epochs: 3.0
@@ -44,7 +44,7 @@ bf16: true
 ddp_timeout: 180000000
 resume_from_checkpoint: null
 max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
-gradient_checkpointing: true             # 必须开
+# gradient_checkpointing: true             # 必须开
 flash_attn: fa2 
 
 ### eval
