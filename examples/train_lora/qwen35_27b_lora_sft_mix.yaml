@@ -22,7 +22,7 @@ overwrite_cache: true
 preprocessing_num_workers: 16 
 dataloader_num_workers: 4
 packing: true
-neat_packing: true
+# neat_packing: true
 
 ### output
 output_dir: saves/qwen35-27b-shooter-mix-attribution/lora/sft
