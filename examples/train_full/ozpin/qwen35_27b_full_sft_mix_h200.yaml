@@ -46,7 +46,7 @@ max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
 flash_attn: fa2 
 
 ### eval
-val_size: 2000
+val_size: 0.1 #2000
 per_device_eval_batch_size: 3
 eval_strategy: steps
 eval_steps: 200
