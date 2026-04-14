@@ -9,7 +9,7 @@ do_eval: true
 finetuning_type: full
 # lora_target: all
 # lora_rank: 8
-deepspeed: examples/deepspeed/ds_z2_config.json
+deepspeed: examples/deepspeed/ds_z3_config.json
 
 ###logging
 run_name: Qwen3.5-27B_mix-attribution_full_experiment
