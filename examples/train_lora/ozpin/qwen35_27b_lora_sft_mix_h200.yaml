@@ -42,7 +42,7 @@ lr_scheduler_type: cosine
 warmup_steps: 100
 bf16: true
 ddp_timeout: 180000000
-resume_from_checkpoint: null
+resume_from_checkpoint: saves/qwen35-27b-mix-attribution/lora/sft/checkpoint-1400/
 max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
 gradient_checkpointing: true             # 必须开
 flash_attn: fa2 
