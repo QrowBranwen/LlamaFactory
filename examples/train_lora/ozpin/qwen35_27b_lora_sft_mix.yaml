@@ -30,7 +30,7 @@ logging_steps: 1
 save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
-save_total_limit: 3          # 限制 checkpoint 数量
+save_total_limit: 30          # 限制 checkpoint 数量
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
 
 ### train
