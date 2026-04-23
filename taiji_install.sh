@@ -12,7 +12,7 @@ pip install flash-attn --no-build-isolation
 # echo "==> [3/4] Installing coscmd ..."
 # pip install coscmd
 
-# echo "==> [4/4] Installing WandB ..."
-# pip install wandb
+echo "==> [4/4] Installing tensorboard ..."
+pip install pip install tensorboard
 
 echo "==> All done!"
