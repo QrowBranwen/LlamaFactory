@@ -15,7 +15,7 @@ deepspeed: examples/deepspeed/ds_z2_config.json
 run_name: Qwen3.5-27B-mix-attribution_lora_experiment
 
 ### dataset
-dataset: attribution_mix
+dataset: taiji_train_data
 template: qwen3_5_nothink
 cutoff_len: 8192
 overwrite_cache: true
@@ -44,7 +44,7 @@ bf16: true
 ddp_timeout: 180000000
 resume_from_checkpoint: null
 max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
-# gradient_checkpointing: true             # 必须开
+# gradient_checkpointing: true             # 爆显存必须开
 flash_attn: fa2 
 
 ### eval

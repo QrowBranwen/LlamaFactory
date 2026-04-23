@@ -771,12 +771,18 @@
       "assistant_tag": "assistant"
     }
   },
-  "simchat": {
-    "file_name": "/dockerdata/ozpintang/llm_data/without_scene_construction.jsonl",
-    "formatting": "alpaca",
+  "taiji_train_data": {
+    "file_name": "/dockerdata/train_data/train_data_qwen3.arrow",
+    "formatting": "sharegpt",
     "columns": {
-      "prompt": "instruction",
-      "response": "output"
+      "messages": "conversations",
+      "system": "system"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
     }
   }
 }
