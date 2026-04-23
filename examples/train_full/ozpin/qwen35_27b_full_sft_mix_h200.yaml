@@ -15,7 +15,7 @@ deepspeed: examples/deepspeed/ds_z3_config.json
 run_name: Qwen3.5-27B_attribution_shooter_mix_full_experiment
 
 ### dataset
-dataset: attribution_shooter_mix
+dataset: attribution_mix
 template: qwen3_5_nothink
 cutoff_len: 8192
 overwrite_cache: true
@@ -24,7 +24,7 @@ dataloader_num_workers: 8
 packing: true
 
 ### output
-output_dir: saves/qwen35-27b-attribution_shooter_mix/full/sft
+output_dir: saves/qwen35-27b-attribution_mix/full/sft
 logging_steps: 1
 save_steps: 200
 plot_loss: true
