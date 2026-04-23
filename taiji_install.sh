@@ -13,6 +13,6 @@ pip install flash-attn --no-build-isolation
 # pip install coscmd
 
 echo "==> [4/4] Installing tensorboard ..."
-pip install pip install tensorboard
+pip install tensorboard
 
 echo "==> All done!"
