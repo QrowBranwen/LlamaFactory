@@ -1,5 +1,5 @@
 ### model
-model_name_or_path: /dockerdata/ozpintang/llm_models/Qwen3.5-27B
+model_name_or_path: /dockerdata/llm_models/Qwen3.5-27B
 trust_remote_code: true
 
 ### method
