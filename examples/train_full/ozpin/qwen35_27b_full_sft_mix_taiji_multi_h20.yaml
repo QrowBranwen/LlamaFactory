@@ -45,7 +45,7 @@ max_grad_norm: 1.0          # 梯度裁剪，防止训练崩溃
 # gradient_checkpointing: true             # 显存爆炸必须开
 flash_attn: fa2 
 use_unsloth_gc: true
-enable_liger_kernel: true
+enable_liger_kernel: false
 ddp_find_unused_parameters: false
 
 ### eval
