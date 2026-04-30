@@ -772,7 +772,7 @@
     }
   },
   "taiji_train_data": {
-    "file_name": "/dockerdata/train_data/train_data_qwen3.arrow",
+    "file_name": "/dockerdata/ozpintang/train_data/train_data_qwen3.arrow",
     "formatting": "sharegpt",
     "columns": {
       "messages": "conversations",
