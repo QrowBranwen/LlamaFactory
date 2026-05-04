@@ -15,6 +15,7 @@ pip install deepspeed==0.18.9
 # pip install coscmd
 pip install liger-kernel
 pip install wandb
+pip install coscmd
 
 echo "==> [4/4] Installing tensorboard ..."
 pip install tensorboard
