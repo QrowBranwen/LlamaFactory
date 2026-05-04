@@ -12,10 +12,10 @@ finetuning_type: full
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ###logging
-run_name: Qwen3.5-27B_mix-attribution_full_experiment
+run_name: Qwen3.5-27B_mix-attribution_20260504_full_experiment
 
 ### dataset
-dataset: taiji_train_data
+dataset: attribution_20260504
 template: qwen3_5_nothink
 cutoff_len: 8192
 overwrite_cache: true
@@ -29,7 +29,9 @@ save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
 save_total_limit: 30          # 限制 checkpoint 数量
-report_to: tensorboard  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+save_strategy: epoch
+save_only_model: true
 
 ### train
 per_device_train_batch_size: 1
@@ -49,7 +51,7 @@ enable_liger_kernel: false
 ddp_find_unused_parameters: false
 
 ### eval
-val_size: 0.1 #2000
+val_size: 2000
 per_device_eval_batch_size: 3
 eval_strategy: steps
 eval_steps: 200
