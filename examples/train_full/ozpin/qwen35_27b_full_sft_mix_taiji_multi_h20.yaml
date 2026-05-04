@@ -52,13 +52,9 @@ packing: true
 
 ### eval
 val_size: 2000
-per_device_eval_batch_size: 3
-eval_strategy: steps
-eval_steps: 200
-### 关键配置：保存 best model
-load_best_model_at_end: true
-metric_for_best_model: eval_loss
-greater_is_better: false
+per_device_eval_batch_size: 2
+eval_strategy: epoch
+
 
 
 
