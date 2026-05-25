@@ -55,9 +55,10 @@ def run_kto(
 
     # Create reference model
     if finetuning_args.share_ref_base:
-        # Dual adapter mode: load ref adapter onto the same base model
-        if training_args.do_train:
-            load_ref_adapter(model, finetuning_args)
+        # Dual adapter mode: load ref adapter onto the same base model.
+        # Load it for both training and eval-only so that ref logp computation
+        # always has the 'ref' adapter available.
+        load_ref_adapter(model, finetuning_args)
         ref_model = None
     elif finetuning_args.ref_model is None and (not training_args.do_train):  # use the model itself
         ref_model = model
