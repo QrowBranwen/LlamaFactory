@@ -1,0 +1,59 @@
+### model
+model_name_or_path: /dockerdata/ozpintang/llm_models/Qwen3.5-27B
+adapter_name_or_path: /dockerdata/ozpintang/llm_models/checkpoint-3879
+trust_remote_code: true
+
+### method
+stage: dpo
+do_train: true
+do_eval: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+pref_loss: sigmoid
+pref_beta: 0.1
+deepspeed: examples/deepspeed/ds_z2_config.json
+
+### logging
+run_name: Qwen3.5-27B_panmian_dpo_15k_lora_from_sft
+
+### dataset
+dataset: panmian_dpo_15k_mix
+template: qwen3_5_nothink
+cutoff_len: 8192
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### output
+output_dir: saves/Qwen3.5-27B_panmian_dpo_15k_lora
+logging_steps: 1
+plot_loss: true
+overwrite_output_dir: true
+save_total_limit: 10
+report_to: wandb
+# save_strategy: epoch
+save_steps: 500
+save_only_model: true
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 2
+learning_rate: 5.0e-6
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+bf16: true
+ddp_timeout: 180000000
+resume_from_checkpoint: null
+max_grad_norm: 1.0
+flash_attn: fa2
+use_unsloth_gc: true
+enable_liger_kernel: false
+ddp_find_unused_parameters: false
+packing: false
+
+### eval
+val_size: 1000
+per_device_eval_batch_size: 1
+eval_strategy: epoch

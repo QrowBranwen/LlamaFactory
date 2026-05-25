@@ -785,6 +785,23 @@
       "assistant_tag": "assistant"
     }
   },
+  "panmian_dpo_15k_mix": {
+  "file_name": "/dockerdata/ozpintang/train_data/dpo_llamafactory_teacher_mix_70_lora_30_base.jsonl",
+  "ranking": true,
+  "formatting": "sharegpt",
+  "columns": {
+    "messages": "conversations",
+    "chosen": "chosen",
+    "rejected": "rejected",
+    "system": "system"
+  },
+  "tags": {
+    "role_tag": "from",
+    "content_tag": "value",
+    "user_tag": "human",
+    "assistant_tag": "gpt"
+  }
+  },
   "taiji_train_data": {
     "file_name": "/dockerdata/ozpintang/train_data/train_data_qwen3.arrow",
     "formatting": "sharegpt",
