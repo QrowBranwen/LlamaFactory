@@ -1,6 +1,9 @@
 ### model
 model_name_or_path: /dockerdata/ozpintang/llm_models/Qwen3.5-27B
 adapter_name_or_path: /dockerdata/ozpintang/llm_models/checkpoint-3879
+###ref
+ref_model: /dockerdata/ozpintang/llm_models/Qwen3.5-27B
+ref_model_adapters: /dockerdata/ozpintang/llm_models/checkpoint-3879
 trust_remote_code: true
 
 ### method
