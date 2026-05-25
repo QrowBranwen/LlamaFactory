@@ -15,7 +15,7 @@ lora_target: all
 lora_rank: 16
 pref_loss: sigmoid
 pref_beta: 0.1
-deepspeed: examples/deepspeed/ds_z2_config.json
+deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### logging
 run_name: Qwen3.5-27B_panmian_dpo_15k_lora_from_sft
