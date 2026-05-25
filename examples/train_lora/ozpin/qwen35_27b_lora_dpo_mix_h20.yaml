@@ -50,7 +50,7 @@ bf16: true
 ddp_timeout: 180000000
 resume_from_checkpoint: null
 max_grad_norm: 1.0
-flash_attn: sdpa
+flash_attn: fa2
 use_unsloth_gc: true
 enable_liger_kernel: false
 ddp_find_unused_parameters: false
