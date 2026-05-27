@@ -19,7 +19,7 @@ train_dataset: data/v1_sft_demo.yaml
 ### training
 output_dir: outputs/test_fsdp2
 micro_batch_size: 4
-batching_strategy: padding_free
+batching_strategy: dynamic_padding_free
 flash_attn: flash_attention2
 cutoff_len: 2048
 learning_rate: 1.0e-4
