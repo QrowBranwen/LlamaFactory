@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 import warnings
 from collections import defaultdict
 from contextlib import nullcontext
@@ -33,13 +32,7 @@ from typing_extensions import override
 from ...extras.constants import IGNORE_INDEX
 from ...extras.packages import is_transformers_version_greater_than
 from ..callbacks import SaveProcessorCallback
-from ..trainer_utils import (
-    create_custom_optimizer,
-    create_custom_scheduler,
-    get_batch_logps,
-    nested_detach,
-    switch_ref_adapter_context,
-)
+from ..trainer_utils import create_custom_optimizer, create_custom_scheduler, get_batch_logps, nested_detach
 
 
 if TYPE_CHECKING:
@@ -268,10 +261,7 @@ class CustomDPOTrainer(DPOTrainer):
 
         if self.ref_model is None:
             ref_model = model
-            if self.finetuning_args.share_ref_base:
-                ref_context = switch_ref_adapter_context(self.accelerator.unwrap_model(model))
-            else:
-                ref_context = self.accelerator.unwrap_model(model).disable_adapter()
+            ref_context = self.accelerator.unwrap_model(model).disable_adapter()
         else:
             ref_model = self.ref_model
             ref_context = nullcontext()
@@ -282,28 +272,6 @@ class CustomDPOTrainer(DPOTrainer):
             reference_rejected_logps = ref_output["rejected_logps"]
 
         return reference_chosen_logps, reference_rejected_logps
-
-    @override
-    def _save(self, output_dir: Optional[str] = None, state_dict=None) -> None:
-        r"""Only save the 'default' (policy) adapter when share_ref_base is enabled."""
-        if self.finetuning_args.share_ref_base:
-            from peft import PeftModel
-
-            output_dir = output_dir if output_dir is not None else self.args.output_dir
-            os.makedirs(output_dir, exist_ok=True)
-            unwrapped = self.accelerator.unwrap_model(self.model)
-            if isinstance(unwrapped, PeftModel):
-                unwrapped.set_adapter("default")
-                unwrapped.save_pretrained(
-                    output_dir,
-                    selected_adapters=["default"],
-                    safe_serialization=getattr(self.args, "save_safetensors", True),
-                )
-                if self.processing_class is not None:
-                    self.processing_class.save_pretrained(output_dir)
-                return
-
-        super()._save(output_dir, state_dict)
 
     @override
     def get_batch_loss_metrics(

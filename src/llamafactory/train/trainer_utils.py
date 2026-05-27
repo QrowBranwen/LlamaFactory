@@ -20,7 +20,6 @@
 import json
 import os
 from collections.abc import Callable, Mapping
-from contextlib import contextmanager
 from typing import TYPE_CHECKING, Any, Optional, Union
 
 import torch
@@ -147,58 +146,6 @@ def create_ref_model(
             logger.info_rank0("Created reference model from the model itself.")
 
     return ref_model
-
-
-def load_ref_adapter(
-    model: "PreTrainedModel",
-    finetuning_args: "FinetuningArguments",
-) -> None:
-    r"""Load a frozen reference LoRA adapter onto the model as adapter named 'ref'.
-
-    After this call the model has two adapters:
-      - "default" (trainable, the policy)
-      - "ref" (frozen, the reference)
-    The active adapter is set back to "default".
-    """
-    from peft import PeftModel
-
-    if not isinstance(model, PeftModel):
-        raise RuntimeError(
-            "`share_ref_base` requires the policy model to be a PeftModel. "
-            "Ensure `finetuning_type=lora` and the adapter is properly configured."
-        )
-
-    ref_adapter_path = finetuning_args.ref_model_adapters
-    logger.info_rank0(f"[share_ref_base] Loading reference adapter from '{ref_adapter_path}' as adapter 'ref'...")
-    model.load_adapter(ref_adapter_path, adapter_name="ref", is_trainable=False)
-
-    # Defensively freeze all ref adapter parameters
-    for name, param in model.named_parameters():
-        if ".ref." in name:
-            param.requires_grad_(False)
-
-    # Switch back to default (policy) adapter for training
-    model.set_adapter("default")
-    logger.info_rank0("[share_ref_base] Reference adapter 'ref' loaded and frozen. Active adapter: 'default'.")
-
-
-@contextmanager
-def switch_ref_adapter_context(unwrapped_model: "PreTrainedModel"):
-    r"""Context manager that switches the PeftModel to the 'ref' adapter, then restores 'default'.
-
-    Args:
-        unwrapped_model: The already-unwrapped PeftModel (call accelerator.unwrap_model first).
-    """
-    from peft import PeftModel
-
-    if not isinstance(unwrapped_model, PeftModel):
-        raise RuntimeError("switch_ref_adapter_context requires a PeftModel.")
-
-    try:
-        unwrapped_model.set_adapter("ref")
-        yield
-    finally:
-        unwrapped_model.set_adapter("default")
 
 
 def create_reward_model(
