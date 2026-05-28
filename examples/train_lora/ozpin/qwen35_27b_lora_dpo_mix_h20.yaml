@@ -14,7 +14,7 @@ finetuning_type: lora
 lora_target: all
 lora_rank: 16
 pref_loss: sigmoid
-pref_beta: 0.05
+pref_beta: 0.1
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### logging
