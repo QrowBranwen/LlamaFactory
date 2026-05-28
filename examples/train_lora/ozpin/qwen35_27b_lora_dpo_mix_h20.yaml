@@ -15,6 +15,7 @@ lora_target: all
 lora_rank: 16
 pref_loss: sigmoid
 pref_beta: 0.1
+pref_ftx: 0.05    #SFT 正则系数，常用 0.05 ~ 0.5
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### logging
@@ -60,5 +61,5 @@ packing: false
 val_size: 1000
 per_device_eval_batch_size: 1
 eval_strategy: steps
-eval_steps: 10
+eval_steps: 30
 # eval_strategy: epoch
