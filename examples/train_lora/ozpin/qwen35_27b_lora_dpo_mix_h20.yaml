@@ -35,7 +35,7 @@ plot_loss: true
 overwrite_output_dir: true
 save_total_limit: 1000
 report_to: wandb
-save_strategy: epoch
+# save_strategy: epoch
 save_steps: 10
 save_only_model: true
 
