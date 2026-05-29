@@ -786,7 +786,7 @@
     }
   },
   "panmian_dpo_15k_mix": {
-  "file_name": "/dockerdata/ozpintang/train_data/dpo_llamafactory_teacher_mix_70_lora_30_base.jsonl",
+  "file_name": "/dockerdata/ozpintang/train_data/dpo_llamafactory_mix_tvl55_lvb25_tvb20.jsonl",
   "ranking": true,
   "formatting": "sharegpt",
   "columns": {
