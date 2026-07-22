@@ -385,7 +385,7 @@ class BAdamArgument:
             "help": (
                 "The mode of the mask for BAdam optimizer. "
                 "`adjacent` means that the trainable parameters are adjacent to each other, "
-                "`scatter` means that trainable parameters are randomly choosed from the weight."
+                "`scatter` means that trainable parameters are randomly chosen from the weight."
             )
         },
     )
@@ -487,7 +487,7 @@ class FinetuningArguments(
         metadata={
             "help": (
                 "Whether or not to use HyperParallel distributed training backend (FSDP/TP). "
-                "Only supported for the 'sft' stage with full fine-tuning."
+                "Only supported for the 'pt' and 'sft' stages with full fine-tuning."
             )
         },
     )
@@ -499,6 +499,10 @@ class FinetuningArguments(
                 "(e.g., tp_size, param_dtype). Used when use_hyper_parallel=True."
             )
         },
+    )
+    hyper_parallel_cp_size: int = field(
+        default=1,
+        metadata={"help": "Context parallel size used when `use_hyper_parallel=True`."},
     )
     use_muon: bool = field(
         default=False,
@@ -526,7 +530,7 @@ class FinetuningArguments(
     )
     freeze_vision_tower: bool = field(
         default=True,
-        metadata={"help": "Whether ot not to freeze the vision tower in MLLM training."},
+        metadata={"help": "Whether or not to freeze the vision tower in MLLM training."},
     )
     freeze_multi_modal_projector: bool = field(
         default=True,
@@ -576,6 +580,7 @@ class FinetuningArguments(
         assert self.finetuning_type in ["lora", "oft", "freeze", "full"], "Invalid fine-tuning method."
         assert self.ref_model_quantization_bit in [None, 8, 4], "We only accept 4-bit or 8-bit quantization."
         assert self.reward_model_quantization_bit in [None, 8, 4], "We only accept 4-bit or 8-bit quantization."
+        assert self.hyper_parallel_cp_size > 0, "`hyper_parallel_cp_size` must be greater than 0."
 
         if self.stage == "ppo" and self.reward_model is None:
             raise ValueError("`reward_model` is necessary for PPO training.")

@@ -12,8 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ...utils.plugin import BasePlugin
+"""Rendering: turn a v1 ``Sample`` into a tokenized ``ModelInput``.
+
+Public entry point is :class:`Renderer`. Internals are split by concern:
+``format`` (message<->HF conversion) and ``escape`` (special-token escaping). Assistant supervision
+is located by a prompt/full token diff rather than a per-model marker table.
+"""
+
+from .rendering import Renderer
 
 
-class OptimizerPlugin(BasePlugin):
-    pass
+__all__ = ["Renderer"]
