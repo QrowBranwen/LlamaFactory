@@ -785,6 +785,20 @@
       "assistant_tag": "assistant"
     }
   },
+  "key_node_cot30_direct70_8k": {
+    "file_name": "key_node_cot30_direct70_8k.arrow",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "system": "system"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  },
   "panmian_dpo_15k_mix": {
   "file_name": "/dockerdata/ozpintang/train_data/dpo_llamafactory_mix_tvl55_lvb25_tvb20.jsonl",
   "ranking": true,
